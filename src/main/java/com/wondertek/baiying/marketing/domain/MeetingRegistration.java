@@ -125,5 +125,79 @@ public class MeetingRegistration implements Serializable {
 	public void setRegisterTime(String registerTime) {
 		this.registerTime = registerTime;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((activityId == null) ? 0 : activityId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + registerStatus;
+		result = prime * result
+				+ ((registerTime == null) ? 0 : registerTime.hashCode());
+		result = prime * result + ((remarks == null) ? 0 : remarks.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MeetingRegistration other = (MeetingRegistration) obj;
+		if (activityId == null) {
+			if (other.activityId != null)
+				return false;
+		} else if (!activityId.equals(other.activityId))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (registerStatus != other.registerStatus)
+			return false;
+		if (registerTime == null) {
+			if (other.registerTime != null)
+				return false;
+		} else if (!registerTime.equals(other.registerTime))
+			return false;
+		if (remarks == null) {
+			if (other.remarks != null)
+				return false;
+		} else if (!remarks.equals(other.remarks))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "MeetingRegistration [id=" + id + ", activityId=" + activityId
+				+ ", userId=" + userId + ", name=" + name + ", phone=" + phone
+				+ ", remarks=" + remarks + ", registerStatus=" + registerStatus
+				+ ", registerTime=" + registerTime + "]";
+	}
     
 }

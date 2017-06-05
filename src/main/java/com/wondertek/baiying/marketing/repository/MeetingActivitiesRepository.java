@@ -11,3 +11,4 @@ public interface MeetingActivitiesRepository  extends MongoRepository<MeetingAct
 
 	MeetingActivities findOneByTitle(String title);   
 }
+

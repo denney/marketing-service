@@ -45,3 +45,4 @@ public class MeetingActivitiesController {
 		return new ResponseEntity<>(ActivitiesPage,null,HttpStatus.OK);
     }
 }
+

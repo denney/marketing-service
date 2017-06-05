@@ -31,3 +31,4 @@ public class MeetingActivitiesService {
     	return meetingActivitiesRepository.findOneByTitle(title);
     }
 }
+

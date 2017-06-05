@@ -24,7 +24,7 @@ public class MeetingRegistration implements Serializable {
 	 */
     @Id
     @Field("ID")
-    private String  id;
+    private String id;
 
     /**
      * 活动表自增ID

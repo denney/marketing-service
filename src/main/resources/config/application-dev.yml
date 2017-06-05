@@ -33,12 +33,9 @@ spring:
         serialization.indent_output: true
     data:
         mongodb:
-            host: 192.168.1.36
+            host: 127.0.0.1
             port: 27017
-            database: market
-            authenticationDatabase: admin
-            username: test
-            password: 6yhn7ujm	   
+            database: market   
     mail:
         host: localhost
         port: 25

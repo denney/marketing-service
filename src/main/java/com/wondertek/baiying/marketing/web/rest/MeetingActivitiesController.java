@@ -25,9 +25,9 @@ public class MeetingActivitiesController {
 	private MeetingActivitiesService  meetingActivitiesService;  
 	
 	@RequestMapping("/save")
-    public ResponseEntity<MeetingActivities> save(MeetingActivities meetingActivities){
+    public MeetingActivities save(MeetingActivities meetingActivities){
 		MeetingActivities Activities =  meetingActivitiesService.save(meetingActivities);
-		return new ResponseEntity<>(Activities,null,HttpStatus.OK);
+		return Activities;
     }
 	
 	@RequestMapping("/findOneByTitle")
@@ -36,9 +36,9 @@ public class MeetingActivitiesController {
 		return Activities;
     }
 	@RequestMapping("/findAll")
-    public ResponseEntity<Page<MeetingActivities>> findAll(int page,int size,Direction direction,String property){
+    public Page<MeetingActivities> findAll(int page,int size,String direction,String property){
 		Page<MeetingActivities> ActivitiesPage = meetingActivitiesService.findAll(page,size,direction,property);
-		return new ResponseEntity<>(ActivitiesPage,null,HttpStatus.OK);
+		return ActivitiesPage;
     }
 }
 

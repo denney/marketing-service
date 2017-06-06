@@ -27,9 +27,11 @@ public class MeetingActivitiesService {
     	return meetingActivitiesRepository.save( meetingActivities);
     }
     public Page<MeetingActivities> findAll(int page,int size,String direction,String property) {
-    	Pageable pageable = new PageRequest(page, size, Direction.DESC, property);
+    	Pageable pageable = null;
     	if("asc".equals(direction)){
     		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}else{
+    		pageable = new PageRequest(page, size, Direction.DESC, property);
     	}
     	return meetingActivitiesRepository.findAll( pageable);
     }

@@ -4,5 +4,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.wondertek.baiying.marketing.domain.VoteLog;
 
-public interface VoteLogRepository extends MongoRepository<VoteLog, Long> {
+public interface VoteLogRepository extends MongoRepository<VoteLog, String> {
 }

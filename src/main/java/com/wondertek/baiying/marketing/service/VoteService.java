@@ -17,7 +17,7 @@ public class VoteService {
 
 	public VoteService(VoteRepository voteRepository) {
 		this.voteRepository = voteRepository;
-	}
+	} 
 
 	/**
 	 * 保存vote信息
@@ -35,9 +35,11 @@ public class VoteService {
 	 * @return Page
 	 */
 	public Page<Vote> findAll (int page,int size,String direction,String property){
-		Pageable pageable = new PageRequest(page, size, Direction.DESC, property);
-		if("asc".equals(direction)){
+		Pageable pageable = null;
+    	if("asc".equals(direction)){
     		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}else{
+    		pageable = new PageRequest(page, size, Direction.DESC, property);
     	}
     	return voteRepository.findAll( pageable);
 		
@@ -47,15 +49,15 @@ public class VoteService {
 	 * @param title
 	 * @return
 	 */
-	public Vote findByTitle(String title){
-		return voteRepository.findByTitle(title);
+	public Vote findOneByTitle(String title){
+		return voteRepository.findOneByTitle(title);
 		
 	}
 	
 	/**根据id删除投票活动
 	 * @param id
 	 */
-	public void deleteById(Long id) {
+	public void deleteById(String id) {
 		voteRepository.delete(id);
 	}
 	

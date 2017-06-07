@@ -9,6 +9,7 @@ import com.wondertek.baiying.marketing.domain.MeetingActivities;
  */
 public interface MeetingActivitiesRepository  extends MongoRepository<MeetingActivities, String>{
 
-	MeetingActivities findOneByTitle(String title);   
+	MeetingActivities findOneByTitle(String title); 
+	MeetingActivities findOneById(String id);
 }
 

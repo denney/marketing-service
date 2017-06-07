@@ -201,7 +201,7 @@ public class LotteryLog implements Serializable {
 		return "LotteryLog [id=" + id + ", userId=" + userId + ", usreName="
 				+ usreName + ", createTime=" + createTime + ", awardId="
 				+ awardId + ", awardName=" + awardName + ", eventId=" + eventId
-				+ ", getStatus=" + getStatus + "]";
+				+ ", getStatus=" + getStatus + "..]";
 	}
     
 }

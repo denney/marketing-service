@@ -35,7 +35,7 @@ spring:
         mongodb:
             host: 127.0.0.1
             port: 27017
-            database: market   
+            database: market
     mail:
         host: localhost
         port: 25

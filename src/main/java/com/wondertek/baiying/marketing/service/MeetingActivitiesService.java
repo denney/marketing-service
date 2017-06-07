@@ -1,5 +1,7 @@
 package com.wondertek.baiying.marketing.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -37,6 +39,12 @@ public class MeetingActivitiesService {
     }
     public MeetingActivities findOneByTitle(String title) {
     	return meetingActivitiesRepository.findOneByTitle(title);
+    }
+    public MeetingActivities findOneById(String id) {
+    	return meetingActivitiesRepository.findOneById(id);
+    }
+    public List<MeetingActivities> findAll() {
+    	return meetingActivitiesRepository.findAll();
     }
 }
 

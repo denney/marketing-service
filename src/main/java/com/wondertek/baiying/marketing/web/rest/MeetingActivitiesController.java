@@ -1,5 +1,7 @@
 package com.wondertek.baiying.marketing.web.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,10 +37,19 @@ public class MeetingActivitiesController {
 		MeetingActivities Activities = meetingActivitiesService.findOneByTitle(title);
 		return Activities;
     }
-	@RequestMapping("/findAll")
-    public Page<MeetingActivities> findAll(int page,int size,String direction,String property){
+	@RequestMapping("/findOneById")
+    public MeetingActivities findOneById(String id){
+		MeetingActivities Activities = meetingActivitiesService.findOneById(id);
+		return Activities;
+    }
+	@RequestMapping("/findAllPage")
+    public Page<MeetingActivities> findAllPage(int page,int size,String direction,String property){
 		Page<MeetingActivities> ActivitiesPage = meetingActivitiesService.findAll(page,size,direction,property);
 		return ActivitiesPage;
+    }
+	@RequestMapping("/findAllList")
+    public List<MeetingActivities> findAllList(){
+		return meetingActivitiesService.findAll();
     }
 }
 

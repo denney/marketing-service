@@ -26,6 +26,7 @@ public class LotteryLogController {
 		LotteryLog log	 = lotteryLogService.findOneById(id);
 		return log;
     }
+	
 	@RequestMapping("/findAll")
     public Page<LotteryLog> findAll(int page,int size,String direction,String property){
 		Page<LotteryLog> logsPage = lotteryLogService.findAll(page,size,direction,property);

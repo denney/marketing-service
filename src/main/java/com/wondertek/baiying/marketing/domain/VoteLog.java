@@ -15,7 +15,7 @@ public class VoteLog implements Serializable{
 	 * 投票日志的唯一标识
 	 */
     @Id
-    private Long id;
+    private String id;
 
     /**
      * 投票的id属于哪个活动
@@ -42,11 +42,12 @@ public class VoteLog implements Serializable{
      */
     private Date createTime;
     
-    public Long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

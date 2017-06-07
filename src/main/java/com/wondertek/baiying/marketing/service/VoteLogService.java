@@ -20,20 +20,20 @@ public class VoteLogService {
 		this.voteLogRepository = voteLogRepository;
 	}
 	
-	/**
-	 * 保存VoteLog信息
-	 */
+	/**保存VoteLog信息 */
 	public VoteLog save(VoteLog voteLog) {
 		return voteLogRepository.save(voteLog);
 	}
 
+	/** 分页查询投票日志信息*/
 	public Page<VoteLog> findAll (int page,int size,String direction,String property){
-		Pageable pageable = new PageRequest(page, size, Direction.DESC, property);
-		if("asc".equals(direction)){
+		Pageable pageable = null;
+    	if("asc".equals(direction)){
     		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}else{
+    		pageable = new PageRequest(page, size, Direction.DESC, property);
     	}
     	return voteLogRepository.findAll( pageable);
-		
 	}
 	
 }

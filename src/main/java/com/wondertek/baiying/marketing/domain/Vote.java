@@ -17,7 +17,7 @@ public class Vote implements Serializable {
 	 */
     @Id
     @Field("vote_id")
-    private Long id;
+    private String id;
 
     /**
      * 投票活动属于哪个app
@@ -110,16 +110,20 @@ public class Vote implements Serializable {
     private String creatorId;
 
 
-	public Long getId() {
+	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getEndTime() {
+		return endTime;
 	}
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getAppId() {

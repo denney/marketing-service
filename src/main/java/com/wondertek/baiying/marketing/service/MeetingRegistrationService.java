@@ -5,7 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,15 +36,17 @@ public class MeetingRegistrationService {
 
     public MeetingRegistration save(MeetingRegistration meetingRegistration){
     	MeetingActivities meetingActivities= meetingActivitiesRepository.findOne(meetingRegistration.getActivityId());
-		int remaining=meetingActivities.getRemaining();
-		int max=meetingActivities.getAppliantsMax();
-		if(remaining<max){
-			remaining=remaining++;
-			meetingActivities.setRemaining(remaining);
-			meetingActivitiesRepository.save(meetingActivities);
-		}else{
-			return null;
-		}
+    	if(meetingActivities!=null){
+    		int remaining=meetingActivities.getRemaining();
+    		int max=meetingActivities.getAppliantsMax();
+    		if(remaining<max){
+    			remaining=remaining++;
+    			meetingActivities.setRemaining(remaining);
+    			meetingActivitiesRepository.save(meetingActivities);
+    		}else{
+    			return null;
+    		}
+    	}
 		return meetingRegistrationRepository.save(meetingRegistration);
     }
     
@@ -50,7 +54,11 @@ public class MeetingRegistrationService {
  	   return meetingRegistrationRepository.findAllByActivityId(activityId);
      }
     
-    public Page<MeetingRegistration> findAll(final Pageable pageable){
+    public Page<MeetingRegistration> findAll(int page,int size,String direction,String property){
+    	Pageable pageable = new PageRequest(page, size, Direction.DESC, property);
+    	if("asc".equals(direction)){
+    		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}
     	return meetingRegistrationRepository.findAll(pageable);
     }
     

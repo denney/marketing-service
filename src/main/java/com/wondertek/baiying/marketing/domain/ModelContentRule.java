@@ -1,12 +1,11 @@
 package com.wondertek.baiying.marketing.domain;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Persist AuditEvent managed by the Spring Boot actuator
@@ -14,7 +13,7 @@ import java.util.Date;
  */
 @Document(collection = "model_content_rule")
 public class ModelContentRule implements Serializable {
-
+	
 	private static final long serialVersionUID = 231274384729379840L;
 
 	/**
@@ -29,7 +28,7 @@ public class ModelContentRule implements Serializable {
      */
     @NotNull
     private String modelId;
-
+    
     /**
      * 组件id
      */
@@ -39,43 +38,43 @@ public class ModelContentRule implements Serializable {
      * 一级分类
      */
     private String fisrtClassify;
-
+    
     /**
      * 二级分类
      */
     private String secondClassify;
-
+    
     /**
      * 三级分类
      */
     private String thirdClassify;
-
+    
     /**
      * 标签
      */
     private String lables;
-
+    
     /**
      * 数量
      */
     private int num;
-
+    
     /**
      * 排序规则
      */
     private String orderRule;
-
+    
     /**
      * 创建时间
      */
     private Date createDate;
-
+    
     /**
      * 修改时间
      */
     private Date modifyDate;
 
-
+    
 
     public String getId() {
         return id;

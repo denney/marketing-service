@@ -1,84 +1,84 @@
 package com.wondertek.baiying.marketing.domain;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.io.Serializable;
-import java.util.Date;
 
 @Document(collection = "award")
 public class Award implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * 唯一标识
 	 */
     @Id
     @Field("event_id")
     private String id;
-
+    
     /**
      * 名称
      */
     @Field("name")
     private String name;
-
+    
     /**
      * 奖品图片
      */
     @Field("poster")
     private String poster;
-
+    
     /**
      * 活动ID
      */
     @Field("event_id")
     private Long eventId;
-
+    
     /**
      * 奖品数量
      */
     @Field("max_count")
     private int maxCount;
-
+    
     /**
      * 剩余数量
      */
     @Field("inventory")
     private int inventory;
-
+    
     /**
      * 中奖概率
      */
     @Field("win_rate")
     private double winRate;
-
+    
     /**
      * 描述
      */
     @Field("description")
     private String description;
-
+    
     /**
 	 * 创建时间
 	 */
 	@Field("create_time")
 	private Date createTime;
-
+	
 	/**
 	 * 创建人编号
 	 */
 	@Field("creator_id")
 	private Long creatorId;
-
+	
 	/**
 	 * 修改时间
 	 */
 	@Field("update_time")
 	private Date updateTime;
-
+	
 	/**
 	 * 修改人编号
 	 */
@@ -280,5 +280,5 @@ public class Award implements Serializable {
 				+ ", creatorId=" + creatorId + ", updateTime=" + updateTime
 				+ ", updatorId=" + updatorId + "]";
 	}
-
+    
 }

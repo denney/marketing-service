@@ -44,8 +44,8 @@ public class MeetingRegistrationController {
 	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public ResponseEntity<Page<MeetingRegistration>> findAll(final Pageable pageable){
-		Page<MeetingRegistration> meetingRegistrationPage = meetingRegistrationService.findAll(pageable);
+	public ResponseEntity<Page<MeetingRegistration>> findAll(int page,int size,String direction,String property){
+		Page<MeetingRegistration> meetingRegistrationPage = meetingRegistrationService.findAll(page,size,direction,property);
 		return new ResponseEntity<>(meetingRegistrationPage,null,HttpStatus.OK);
 	}
 	

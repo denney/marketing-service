@@ -1,15 +1,15 @@
 package com.wondertek.baiying.marketing.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+import java.util.Date;
+
 @Document(collection = "vote")
 public class Vote implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,87 +23,87 @@ public class Vote implements Serializable {
      * 投票活动属于哪个app
      */
     private String appId;
-    
+
     /**
      * 投票海报图片路径
      */
     private String posterUrl;
-    
+
     /**
      * 单选多选方式
      */
     private String choiceType;
-    
+
     /**
      * 活动生成时间
      */
     private Date createTime;
-    
+
     /**
      * 活动结束时间
      */
     private Date endTime;
-    
+
     /**
      * 活动说明
      */
     private String description;
-    
+
     /**
      * 活动参与次数选择
      */
     private int severalTimes;
-    
+
     /**
      * 活动开始时间
      */
     private Date startTime;
-    
+
     /**
      * 活动在线状态
      */
     private String onlineStatus;
-    
+
     /**
      * 审核状态
      */
     private String status;
-    
+
     /**
      * 活动标题
      */
     private String title;
-    
+
     /**
      * 投票时间间隔
      */
     private String timeInterval;
-    
+
     /**
      * 文字选项集合或者图片选项集合
      */
     private String options;
-    
+
     /**
      *记录活动更新时间
      */
     private Date updateTime;
-    
+
     /**
      *投票花费,eg：消耗积分
      */
     private String cost;
-    
+
     /**
      *投票形式：文字投票还是图片投票
      */
     private String type;
-    
+
     /**
      *投票人身份，eg:会员
      */
     private String memberLevel;
-    
+
     /**
      *记录创建人
      */

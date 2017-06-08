@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 
-@Document(collection = "ads")
-public class Ads implements Serializable {
+@Document(collection = "notice")
+public class Notice implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -54,10 +54,10 @@ public class Ads implements Serializable {
     @Field("onlineStatus")
     private String onlineStatus;
 
-    public Ads() {
+    public Notice() {
     }
 
-    public Ads(String id, String appId, String content, String createTime, String creatorId, String creatorName, String
+    public Notice(String id, String appId, String content, String createTime, String creatorId, String creatorName, String
         onlineStatus) {
         this.id = id;
         this.appId = appId;

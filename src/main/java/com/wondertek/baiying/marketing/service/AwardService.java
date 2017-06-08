@@ -1,5 +1,7 @@
 package com.wondertek.baiying.marketing.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -38,6 +40,19 @@ public class AwardService {
     }
     public Award findOneByName(String name) {
     	return awardRepository.findOneByName(name);
+    }
+    
+
+    public Award findOneById(String id) {
+    	return awardRepository.findOneById(id);
+    }
+    
+    public List<Award> findAll() {
+    	return awardRepository.findAll();
+    }
+
+    public void deleteById(String id) {
+    	awardRepository.delete(id);;
     }
 
 }

@@ -18,7 +18,7 @@ public class VoteController {
 	@RequestMapping("/save")
 	public Vote save(Vote vote) {
 		Vote saveVote = voteService.save(vote);
-		return voteService.save(saveVote);
+		return saveVote;
 	}
 
 	@RequestMapping("/findAll")
@@ -27,10 +27,9 @@ public class VoteController {
 		Page<Vote> votePage = voteService.findAll(page, size, direction,
 				property);
 		return votePage;
-
 	}
 
-	@RequestMapping("/findByTitle")
+	@RequestMapping("/findOneByTitle")
 	public Vote findOneByTitle(String title) {
 		Vote voteTitle = voteService.findOneByTitle(title);
 		return voteTitle;

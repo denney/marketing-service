@@ -35,7 +35,7 @@ public class MeetingRegistrationService {
     }
 
     public MeetingRegistration save(MeetingRegistration meetingRegistration){
-    	MeetingActivities meetingActivities= meetingActivitiesRepository.findOne(meetingRegistration.getActivityId());
+    	MeetingActivities meetingActivities= meetingActivitiesRepository.findOne(Long.valueOf(meetingRegistration.getActivityId()));
     	if(meetingActivities!=null){
     		int remaining=meetingActivities.getRemaining();
     		int max=meetingActivities.getAppliantsMax();

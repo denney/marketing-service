@@ -38,7 +38,7 @@ public class MeetingActivitiesController {
 		return Activities;
     }
 	@RequestMapping("/findOneById")
-    public MeetingActivities findOneById(String id){
+    public MeetingActivities findOneById(Long id){
 		MeetingActivities Activities = meetingActivitiesService.findOneById(id);
 		return Activities;
     }

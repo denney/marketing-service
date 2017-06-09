@@ -24,14 +24,12 @@ public class QuestionAnswerController {
     private QuestionAnswerService questionAnswerService;
 	
 	@RequestMapping("/save")
-	@ResponseBody
-    public ResponseEntity<QuestionAnswer> save(QuestionAnswer QuestionAnswer){
+    public QuestionAnswer save(QuestionAnswer QuestionAnswer){
 		QuestionAnswer registration =  questionAnswerService.save(QuestionAnswer);
-		return new ResponseEntity<>(registration,null,HttpStatus.OK);
+		return registration;
     }
 	
 	@RequestMapping("/findAllByQuestionStatusAndAppId")
-	@ResponseBody
     public List<QuestionAnswer> findAllByQuestionStatusAndAppId(String questionStatus,String appId){
 		return questionAnswerService.findAllByQuestionStatusAndAppId(questionStatus, appId);
     }
@@ -44,19 +42,16 @@ public class QuestionAnswerController {
 //	}
 	
 	@RequestMapping("/findOneById")
-	@ResponseBody
 	public QuestionAnswer findOneById(String id){
 	    	return questionAnswerService.findOneById(id);
 	}
 	
 	@RequestMapping("/findAllByQuestionStatusOrQuestionStatusAndAppId")
-	@ResponseBody
 	public List<QuestionAnswer> findAllByQuestionStatusOrQuestionStatusAndAppId(String questionStatus,String Status,String appId){
  	   return questionAnswerService.findAllByQuestionStatusOrQuestionStatusAndAppId(questionStatus,Status,appId);
     }
 	
 	@RequestMapping("/findAllByQuestionStatusAndAppIdAndQuestionTimeAfter")
-	@ResponseBody
     public List<QuestionAnswer> findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(String questionStatus,String appId,String questionTime){
     	return questionAnswerService.findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(questionStatus,appId,questionTime);
     }

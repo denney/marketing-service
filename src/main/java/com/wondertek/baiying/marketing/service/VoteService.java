@@ -17,7 +17,7 @@ public class VoteService {
 
 	public VoteService(VoteRepository voteRepository) {
 		this.voteRepository = voteRepository;
-	} 
+	}
 
 	/**
 	 * 保存vote信息
@@ -26,7 +26,7 @@ public class VoteService {
 		return voteRepository.save(vote);
 	}
 
-	
+
 	/**分页查询所有投票
 	 * @param page
 	 * @param size
@@ -42,24 +42,24 @@ public class VoteService {
     		pageable = new PageRequest(page, size, Direction.DESC, property);
     	}
     	return voteRepository.findAll( pageable);
-		
+
 	}
-	
+
 	/**根据标题查投票活动
-	 * @param title
+	 * @param
 	 * @return
 	 */
-	public Vote findOneByTitle(String title){
-		return voteRepository.findOneByTitle(title);
-		
+	public Vote findOneByTitle(Long id ){
+		return voteRepository.findOne(id);
+
 	}
-	
+
 	/**根据id删除投票活动
 	 * @param id
 	 */
-	public void deleteById(String id) {
+	public void deleteById(Long id) {
 		voteRepository.delete(id);
 	}
-	
-	
+
+
 }

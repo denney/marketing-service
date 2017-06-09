@@ -3,122 +3,127 @@ package com.wondertek.baiying.marketing.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
-@Document(collection = "lottery_event")
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "lottery_event")
 public class LotteryEvent implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * 唯一标识
+	 * 抽奖活动ID
 	 */
 	@Id
-    @Field("id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	/**
 	 * 用户id
 	 */
-	@Field("user_id")
+	@Column(name = "user_id")
 	private Long userId;
 	
 	/**
 	 * appID
 	 */
-	@Field("app_id")
+	@Column(name ="app_id")
 	private Long appId;
 	
 	/**
 	 * 活动标题
 	 */
-	@Field("title")
+	@Column(name ="title")
 	private String title;
 	
 	/**
 	 * 活动说明
 	 */
-	@Field("description")
+	@Column(name ="description")
 	private String description;
 	
 	/**
 	 * 海报
 	 */
-	@Field("poster_url")
+	@Column(name ="poster_url")
 	private String posterUrl;
 	
 	/**
 	 * 活动状态    0：即将上线；1：正在进行；2：已结束
 	 */
-	@Field("status")
+	@Column(name ="status")
 	private String status;
 	
 	/**
 	 * 活动在线状态    0：上线；1：下线
 	 */
-	@Field("online_status")
+	@Column(name ="online_status")
 	private int onlineStatus;
 	
 	/**
 	 * 活动开始时间
 	 */
-	@Field("start_time")
+	@Column(name ="start_time")
 	private Date startTime;
 	
 	/**
 	 * 活动结束时间
 	 */
-	@Field("end_time")
+	@Column(name ="end_time")
 	private Date endTime;
 	
 	/**
 	 * 抽奖会员等级限制
 	 */
-	@Field("member_level")
+	@Column(name ="member_level")
 	private String memberLevel;
 	
 	/**
 	 * 抽奖次数
 	 */
-	@Field("several_times")
+	@Column(name ="several_times")
 	private int severalTimes;
 	
 	/**
 	 * 抽奖次数限制范围（活动期间、每天）
 	 */
-	@Field("time_interval")
+	@Column(name ="time_interval")
 	private String timeInterval;
 	
 	/**
 	 * 每次抽奖消耗积分
 	 */
-	@Field("cost")
+	@Column(name ="cost")
 	private String cost;
 	
 	/**
 	 * 创建时间
 	 */
-	@Field("create_time")
+	@Column(name ="create_time")
 	private Date createTime;
 	
 	/**
 	 * 创建人编号
 	 */
-	@Field("creator_id")
+	@Column(name ="creator_id")
 	private Long creatorId;
 	
 	/**
 	 * 修改时间
 	 */
-	@Field("update_time")
+	@Column(name ="update_time")
 	private Date updateTime;
 	
 	/**
 	 * 修改人编号
 	 */
-	@Field("updator_id")
+	@Column(name ="updator_id")
 	private Long updatorId;
 
 	public Long getId() {

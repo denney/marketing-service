@@ -2,14 +2,14 @@ package com.wondertek.baiying.marketing.repository;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.wondertek.baiying.marketing.domain.QuestionAnswer;
 
 /**
  * Spring Data JPA repository for the ModelContentRule entity.
  */
-public interface QuestionAnswerRepository extends MongoRepository<QuestionAnswer, String> {
+public interface QuestionAnswerRepository extends JpaRepository<QuestionAnswer, String> {
 
 	List<QuestionAnswer> findAllByQuestionStatus(String questionStatus);
 	

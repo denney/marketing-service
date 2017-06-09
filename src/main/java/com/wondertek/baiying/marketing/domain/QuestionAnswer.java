@@ -2,17 +2,20 @@ package com.wondertek.baiying.marketing.domain;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * Persist AuditEvent managed by the Spring Boot actuator
  * @see org.springframework.boot.actuate.audit.AuditEvent
  */
-@Document(collection = "QUESTION_ANSWER")
+@Entity
+@Table(name= "question_answer")
 public class QuestionAnswer implements Serializable {
 	
 	private static final long serialVersionUID = 231274384729379840L;
@@ -22,8 +25,8 @@ public class QuestionAnswer implements Serializable {
 	/**
 	 * 问答表自增ID
 	 */
-    @Id
-    @Field("ID")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     
     /**
@@ -59,7 +62,15 @@ public class QuestionAnswer implements Serializable {
      * 回答时间
      */
     private String answerTime;
+    
+    /**
+     * 问题详情
+     */
     private String questionInfo;
+    
+    /**
+     * 回答详情
+     */
     private String answerInfo;
     
     /**
@@ -80,66 +91,78 @@ public class QuestionAnswer implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	@Column(name = "app_id")
 	public String getAppId() {
 		return appId;
 	}
 	public void setAppId(String appId) {
 		this.appId = appId;
 	}
+	@Column(name = "user_id")
 	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	@Column(name = "user_name")
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	@Column(name = "answer_id")
 	public String getAnswerId() {
 		return answerId;
 	}
 	public void setAnswerId(String answerId) {
 		this.answerId = answerId;
 	}
+	@Column(name = "answer_name")
 	public String getAnswerName() {
 		return answerName;
 	}
 	public void setAnswerName(String answerName) {
 		this.answerName = answerName;
 	}
+	@Column(name = "question_time")
 	public String getQuestionTime() {
 		return questionTime;
 	}
 	public void setQuestionTime(String questionTime) {
 		this.questionTime = questionTime;
 	}
+	@Column(name = "answer_time")
 	public String getAnswerTime() {
 		return answerTime;
 	}
 	public void setAnswerTime(String answerTime) {
 		this.answerTime = answerTime;
 	}
+	@Column(name = "question_info")
 	public String getQuestionInfo() {
 		return questionInfo;
 	}
 	public void setQuestionInfo(String questionInfo) {
 		this.questionInfo = questionInfo;
 	}
+	@Column(name = "answer_info")
 	public String getAnswerInfo() {
 		return answerInfo;
 	}
 	public void setAnswerInfo(String answerInfo) {
 		this.answerInfo = answerInfo;
 	}
+	@Column(name = "online_status")
 	public int getOnlineStatus() {
 		return onlineStatus;
 	}
 	public void setOnlineStatus(int onlineStatus) {
 		this.onlineStatus = onlineStatus;
 	}
+	@Column(name = "question_status")
 	public int getQuestionStatus() {
 		return questionStatus;
 	}

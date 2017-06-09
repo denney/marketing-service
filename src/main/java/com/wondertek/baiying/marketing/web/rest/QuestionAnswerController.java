@@ -22,7 +22,7 @@ public class QuestionAnswerController {
 
 	@Autowired
     private QuestionAnswerService questionAnswerService;
-	@Autowired
+	
 	@RequestMapping("/save")
 	@ResponseBody
     public ResponseEntity<QuestionAnswer> save(QuestionAnswer QuestionAnswer){

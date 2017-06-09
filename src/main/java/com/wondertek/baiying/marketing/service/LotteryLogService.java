@@ -30,7 +30,7 @@ public class LotteryLogService {
 	}
 	
 	public LotteryLog findOneById(String id) {
-	    return lotteryLogRepository.findOne(id);
+	    return lotteryLogRepository.findOneById(id);
 	}
 	
 	 public Page<LotteryLog> findAll(int page,int size,String direction,String property) {

@@ -1,14 +1,16 @@
 package com.wondertek.baiying.marketing.service;
 
-import com.wondertek.baiying.marketing.domain.Notice;
-import com.wondertek.baiying.marketing.repository.NoticeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.wondertek.baiying.marketing.domain.Notice;
+import com.wondertek.baiying.marketing.repository.NoticeRepository;
 
 /**
  * Service class for managing users.
@@ -19,31 +21,39 @@ public class NoticeService {
 
     private final Logger log = LoggerFactory.getLogger(NoticeService.class);
 
-    private final NoticeRepository adsRepository;
+    private final NoticeRepository noticeRepository;
 
 
-    public NoticeService(NoticeRepository adsRepository) {
-        this.adsRepository = adsRepository;
+    public NoticeService(NoticeRepository noticeRepository) {
+        this.noticeRepository = noticeRepository;
     }
 
-    //保存更新操作
-    public Notice save(Notice ads) {
-        return adsRepository.save(ads);
+    public Notice save(Notice notice) {
+        return noticeRepository.save(notice);
     }
 
-    //根据id查一条记录
-    public Notice findById(String id) {
-        return adsRepository.findOne(id);
+    public Notice findById(Long id) {
+        return noticeRepository.findOne(id);
     }
 
 
-    //分页查询公告list
-    public Page<Notice> fingAllAds(int pageNum, int pageSize) {
+    public Page<Notice> findAll (int page,int size,String direction,String property){
+		Pageable pageable = null;
+    	if("asc".equals(direction)){
+    		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}else{
+    		pageable = new PageRequest(page, size, Direction.DESC, property);
+    	}
+    	return noticeRepository.findAll( pageable);
 
-        Pageable pageable = new PageRequest(pageNum, pageSize);
-        return adsRepository.findAll(pageable);
+	}
 
-    }
+	/**根据id删除投票活动
+	 * @param id
+	 */
+	public void deleteById(Long id) {
+		noticeRepository.delete(id);
+	}
 
 
 }

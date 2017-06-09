@@ -40,7 +40,7 @@ public class MeetingActivitiesService {
     public MeetingActivities findOneByTitle(String title) {
     	return meetingActivitiesRepository.findOneByTitle(title);
     }
-    public MeetingActivities findOneById(String id) {
+    public MeetingActivities findOneById(Long id) {
     	return meetingActivitiesRepository.findOneById(id);
     }
     public List<MeetingActivities> findAll() {

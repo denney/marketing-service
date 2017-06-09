@@ -1,8 +1,8 @@
 package com.wondertek.baiying.marketing.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-
 import com.wondertek.baiying.marketing.domain.VoteLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface VoteLogRepository extends MongoRepository<VoteLog, String> {
+public abstract interface  VoteLogRepository extends JpaRepository<VoteLog, Long>,JpaSpecificationExecutor<VoteLog> {
 }

@@ -2,114 +2,140 @@ package com.wondertek.baiying.marketing.domain;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document(collection = "meeting_activities")
+@Entity
+@Table(name = "meeting_activities")
 public class MeetingActivities implements Serializable {
 	private static final long serialVersionUID = 231274384729379840L;
 
 	/**
 	 * 唯一标识
 	 */
-    @Id
-    @Field("_id")
-    private String id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     
     /**
      * 手机APP ID
      */
+	@Column(name = "app_id")
     private String appId;
 
     /**
      * 标题
      */
+	@Column(name = "title")
     private String title;
     /**
      * 地址
      */
+	@Column(name = "address")
     private String address;
     /**
-     * 在线状态
+     * 在线状态 
      */
+	@Column(name = "online_status")
     private String onlineStatus;
     /**
      * 联系人
      */
+	@Column(name = "contacts")
     private String contacts; 
     /**
      * 联系电话
      */
+	@Column(name = "contact_phone")
     private String contactPhone;
     /**
      * 海报说明
      */
+	@Column(name = "description")
     private String description;
     /**
      * 邮箱地址
      */
+	@Column(name = "event_poster")
     private String eventPoster;
     /**
      * 最大报名人数
      */
+	@Column(name = "appliant_max")
     private Integer appliantsMax;
     /**
      * 剩余报名人数
      */
+	@Column(name = "remaining")
     private Integer Remaining;
     /**
      * 会员等级
      */
+	@Column(name = "member_level")
     private Integer memberLevel;
     /**
      * 平均每次使用积分
      */
+	@Column(name = "avg_integral")
     private Integer avgIntegral;
     /**
      * 见面会时间
      */
+	@Column(name = "datetime")
     private String datetime;
     /**
      * 报名开始时间
      */
+	@Column(name = "register_start_time")
     private String registerStartTime;
     /**
      * 报名结束时间
      */
+	@Column(name = "register_end_time")
     private String registerEndTime;
     /**
      * 见面会创建时间
      */
+	@Column(name = "create_time")
     private String createTime;
     /**
      * 每次报名花费
      */
+	@Column(name = "cost")
     private String cost;
     /**
      * 创建人ID
      */
+	@Column(name = "create_id")
     private String createId;
     /**
      * 百应ID
      */
+	@Column(name = "baiying_id")
     private String baiyingId;
     /**
      * 见面会更新ID
      */
+	@Column(name = "update_id")
     private String updateId;
     /**
      * 见面会更新时间
      */
+	@Column(name = "update_time")
     private String updateTime;
     /**
      * 见面会创建状态
      */
+	@Column(name = "status")
     private Integer status;
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getAppId() {

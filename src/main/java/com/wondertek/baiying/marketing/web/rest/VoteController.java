@@ -30,14 +30,14 @@ public class VoteController {
 	}
 
 	@RequestMapping("/findOneByTitle")
-	public Vote findOneByTitle(String title) {
-		Vote voteTitle = voteService.findOneByTitle(title);
+	public Vote findOneById(String id) {
+		Vote voteTitle = voteService.findOneByTitle(Long.parseLong(id));
 		return voteTitle;
 	}
 
 	@RequestMapping("/delete")
 	public void deleteById(String id) {
-		voteService.deleteById(id);
+		voteService.deleteById(Long.parseLong(id));
 	}
 
 }

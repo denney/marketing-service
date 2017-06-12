@@ -42,7 +42,7 @@ public class LotteryEventController {
 
     @RequestMapping(value = "/lotteryEvents/{id}",method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public LotteryEvent findById (@PathVariable String id) {
+    public LotteryEvent findById (@PathVariable Long id) {
         return lotteryEventService.findById(id);
     }
 }

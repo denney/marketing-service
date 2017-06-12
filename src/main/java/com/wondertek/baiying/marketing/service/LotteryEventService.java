@@ -54,7 +54,7 @@ public class LotteryEventService {
      * @param id
      * @return
      */
-    public LotteryEvent findById (String id) {
+    public LotteryEvent findById (Long id) {
         return lotteryEventRepository.findById(id);
     }
 

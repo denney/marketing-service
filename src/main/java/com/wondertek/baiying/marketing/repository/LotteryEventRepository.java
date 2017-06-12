@@ -6,5 +6,5 @@ import com.wondertek.baiying.marketing.domain.LotteryEvent;
 
 public interface LotteryEventRepository extends JpaRepository<LotteryEvent, String> {
 	
-	 LotteryEvent findById (String id);
+	 LotteryEvent findById (Long id);
 }

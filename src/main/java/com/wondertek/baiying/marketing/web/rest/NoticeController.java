@@ -89,14 +89,14 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("/publishNotice")
-	public String publishNotice(Long id) {
+	public Notice publishNotice(Long id) {
 		Notice notice = noticeService.findOneById(id);
 		if (notice.getOnlineStatus().equals("0")) {
 			notice.setOnlineStatus("1");
-			noticeService.save(notice);
-			return "success";
+			Notice publishNotice = noticeService.save(notice);
+			return publishNotice;
 		} else {
-			return "failure";
+			return notice;
 		}
 
 	}

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.wondertek.baiying.marketing.domain.LotteryLog;
 
 public interface LotteryLogRepository extends JpaRepository<LotteryLog, String> {
-	LotteryLog findOneById(String id);
+	LotteryLog findById(Long id);
 	
-	LotteryLog findOneByUserId(String userId);
+	LotteryLog findOneByUserId(Long userId);
 }

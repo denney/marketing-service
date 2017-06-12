@@ -29,11 +29,11 @@ public class LotteryLogService {
 	    return lotteryLogRepository.save(lotteryLog);
 	}
 	
-	public LotteryLog findOneById(String id) {
-	    return lotteryLogRepository.findOneById(id);
+	public LotteryLog findById(Long id) {
+	    return lotteryLogRepository.findById(id);
 	}
 	
-	public LotteryLog findOneByUserId(String userId) {
+	public LotteryLog findOneByUserId(Long userId) {
 	    return lotteryLogRepository.findOneByUserId(userId);
 	}
 	

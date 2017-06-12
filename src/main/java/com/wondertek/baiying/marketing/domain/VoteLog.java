@@ -3,6 +3,10 @@ package com.wondertek.baiying.marketing.domain;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -47,7 +51,8 @@ public class VoteLog implements Serializable{
      * 生成时间      举例： 2011-04-12 22:51:34.0
      */
     @Column(name="create_time")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     public VoteLog() {

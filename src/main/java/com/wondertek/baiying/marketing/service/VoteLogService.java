@@ -1,12 +1,15 @@
 package com.wondertek.baiying.marketing.service;
 
-import com.wondertek.baiying.marketing.domain.VoteLog;
-import com.wondertek.baiying.marketing.repository.VoteLogRepository;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.wondertek.baiying.marketing.domain.VoteLog;
+import com.wondertek.baiying.marketing.repository.VoteLogRepository;
 
 @Service
 @Transactional
@@ -18,16 +21,18 @@ public class VoteLogService {
 		this.voteLogRepository = voteLogRepository;
 	}
 
-	/**保存VoteLog信息 */
 	public VoteLog save(VoteLog voteLog) {
 		return voteLogRepository.save(voteLog);
 	}
 
-	/** 分页查询投票日志信息*/
-	public Page<VoteLog> findAll (int page,int size){
+	public List<VoteLog> findPage (int page,int size,Long voteId){
 		Pageable pageable = new PageRequest(page, size);
-
-    	return voteLogRepository.findAll( pageable);
+		Page<VoteLog> pageVoteLogs=voteLogRepository.findAllByVoteId(voteId, pageable);
+    	return pageVoteLogs.getContent();
 	}
 
+	public List<Object[]> findCount(Long voteId){
+		List<Object[]> objLogs=voteLogRepository.findCount(voteId);
+		return objLogs;
+	}
 }

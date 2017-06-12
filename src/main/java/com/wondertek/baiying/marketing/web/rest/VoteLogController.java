@@ -1,14 +1,16 @@
 package com.wondertek.baiying.marketing.web.rest;
 
-import com.wondertek.baiying.marketing.domain.VoteLog;
-import com.wondertek.baiying.marketing.service.VoteLogService;
-import com.wondertek.baiying.marketing.web.rest.util.getSysTime;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
+import com.wondertek.baiying.marketing.domain.VoteLog;
+import com.wondertek.baiying.marketing.service.VoteLogService;
 
 @RestController
 @RequestMapping("/voteLog")
@@ -18,29 +20,30 @@ public class VoteLogController {
 	private VoteLogService voteLogService;
 
 	@RequestMapping("/save")
-    public VoteLog save(HttpServletRequest request){
-        String voteId= request.getParameter("voteId");
-        String userName= request.getParameter("userName");
-        String userId= request.getParameter("userId");
-        String option= request.getParameter("option");
-
-
-
-		VoteLog log=  voteLogService.save(new VoteLog( voteId,  userName,  userId,  option, getSysTime.getTimestamp()));
-		return new VoteLog();
+    public VoteLog save(VoteLog voteLog){
+		voteLog.setCreateTime(new Date());
+		VoteLog vote=  voteLogService.save(voteLog);
+		return vote;
     }
 
-	@RequestMapping("/findAll")
-    public Page<VoteLog> findAll(String pageNum,String pageSize){
-        Page<VoteLog> pageLog=  voteLogService.findAll(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
+	@RequestMapping("/findPage")
+    public List<VoteLog> findPage(int page,int size,Long voteId){
+		List<VoteLog> pageLog=  voteLogService.findPage(page, size, voteId);
         return pageLog;
     }
-    public String findVoteResult(){
-
-
-
-        return   "";
-    }
-
+	
+	@RequestMapping("/findCount")
+	public Map<String, Object> findCount(Long voteId){
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("resCode", "0000");
+		map.put("resMessage", "success");
+		List<Object[]> optionCount=voteLogService.findCount(voteId);
+		Map<Object, Object> option=new HashMap<Object, Object>();
+		for (Object[] objects : optionCount) {
+			option.put(objects[0], objects[1]);
+		}
+		map.put("options", option);
+		return map;
+	}
 
 }

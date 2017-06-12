@@ -1,5 +1,7 @@
 package com.wondertek.baiying.marketing.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -19,41 +21,76 @@ import com.wondertek.baiying.marketing.repository.NoticeRepository;
 @Transactional
 public class NoticeService {
 
-    private final Logger log = LoggerFactory.getLogger(NoticeService.class);
+	private final Logger log = LoggerFactory.getLogger(NoticeService.class);
 
-    private final NoticeRepository noticeRepository;
+	private final NoticeRepository noticeRepository;
 
+	public NoticeService(NoticeRepository noticeRepository) {
+		this.noticeRepository = noticeRepository;
+	}
 
-    public NoticeService(NoticeRepository noticeRepository) {
-        this.noticeRepository = noticeRepository;
-    }
+	/**
+	 * 新增
+	 * 
+	 * @param notice
+	 * @return
+	 */
+	public Notice save(Notice notice) {
+		return noticeRepository.save(notice);
+	}
 
-    public Notice save(Notice notice) {
-        return noticeRepository.save(notice);
-    }
+	/**
+	 * 根据id查找一个公告
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Notice findOneById(Long id) {
+		return noticeRepository.findOne(id);
+	}
 
-    public Notice findById(Long id) {
-        return noticeRepository.findOne(id);
-    }
-
-
-    public Page<Notice> findAll (int page,int size,String direction,String property){
+	/**
+	 * 分页查询
+	 * 
+	 * @param page
+	 * @param size
+	 * @param direction
+	 * @param property
+	 * @return
+	 */
+	public Page<Notice> findAllByPaging(int page, int size, String direction,
+			String property) {
 		Pageable pageable = null;
-    	if("asc".equals(direction)){
-    		pageable = new PageRequest(page, size, Direction.ASC, property);
-    	}else{
-    		pageable = new PageRequest(page, size, Direction.DESC, property);
-    	}
-    	return noticeRepository.findAll( pageable);
+		if ("asc".equals(direction)) {
+			pageable = new PageRequest(page, size, Direction.ASC, property);
+		} else {
+			pageable = new PageRequest(page, size, Direction.DESC, property);
+		}
+		return noticeRepository.findAll(pageable);
 
 	}
 
-	/**根据id删除投票活动
+	/**
+	 * 根据id删除公告
+	 * 
 	 * @param id
 	 */
 	public void deleteById(Long id) {
 		noticeRepository.delete(id);
 	}
 
+	/**
+	 * 根据所属的appid查询公告
+	 * 
+	 * @param appId
+	 * @return
+	 */
+	public List<Notice> findByAppId(String appId) {
+		List<Notice> listOfAppId = null;
+		if (appId != null) {
+			listOfAppId =  noticeRepository.findByAppId(appId);
+		}
+		return listOfAppId;
+	}
 
 }

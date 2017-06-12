@@ -19,7 +19,7 @@ public class Notice implements Serializable {
 	 */
 	@Id
 	@Column(name = "id")
-	private String id;
+	private Long id;
 
 	/**
 	 * 该业务属于哪个app
@@ -39,10 +39,6 @@ public class Notice implements Serializable {
 	@Column(name = "create_time")
 	private Date createTime;
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
 	/**
 	 * 记录创建人
 	 */
@@ -60,8 +56,61 @@ public class Notice implements Serializable {
 	 */
 	@Column(name = "online_status")
 	private String onlineStatus;
+	
+	public Long getId() {
+		return id;
+	}
 
-	public Notice() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCreatorId() {
+		return creatorId;
+	}
+
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
+	}
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+
+	public String getOnlineStatus() {
+		return onlineStatus;
+	}
+
+	public void setOnlineStatus(String onlineStatus) {
+		this.onlineStatus = onlineStatus;
 	}
 
 	@Override
@@ -137,51 +186,6 @@ public class Notice implements Serializable {
 		return true;
 	}
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
-	public String getAppId() {
-		return appId;
-	}
-
-	public void setAppId(String appId) {
-		this.appId = appId;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
-	public String getCreatorName() {
-		return creatorName;
-	}
-
-	public void setCreatorName(String creatorName) {
-		this.creatorName = creatorName;
-	}
-
-	public String getOnlineStatus() {
-		return onlineStatus;
-	}
-
-	public void setOnlineStatus(String onlineStatus) {
-		this.onlineStatus = onlineStatus;
-	}
 }

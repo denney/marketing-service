@@ -1,6 +1,7 @@
 package com.wondertek.baiying.marketing.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -27,12 +30,12 @@ public class QuestionAnswer implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private long id;
     
     /**
      * 区分app类型
      */
-    private String appId;
+    private int appId;
     
     /**
      * 提问者id
@@ -56,12 +59,12 @@ public class QuestionAnswer implements Serializable {
     /**
      * 提问时间
      */
-    private String questionTime;
+    private Date questionTime;
     
     /**
      * 回答时间
      */
-    private String answerTime;
+    private Date answerTime;
     
     /**
      * 问题详情
@@ -85,18 +88,18 @@ public class QuestionAnswer implements Serializable {
      * 点赞次数
      */
 //    private String praiseTimes;
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
 	@Column(name = "app_id")
-	public String getAppId() {
+	public int getAppId() {
 		return appId;
 	}
-	public void setAppId(String appId) {
+	public void setAppId(int appId) {
 		this.appId = appId;
 	}
 	@Column(name = "user_id")
@@ -128,17 +131,19 @@ public class QuestionAnswer implements Serializable {
 		this.answerName = answerName;
 	}
 	@Column(name = "question_time")
-	public String getQuestionTime() {
+	@Temporal(TemporalType.TIMESTAMP) 
+	public Date getQuestionTime() {
 		return questionTime;
 	}
-	public void setQuestionTime(String questionTime) {
+	public void setQuestionTime(Date questionTime) {
 		this.questionTime = questionTime;
 	}
 	@Column(name = "answer_time")
-	public String getAnswerTime() {
+	@Temporal(TemporalType.TIMESTAMP) 
+	public Date getAnswerTime() {
 		return answerTime;
 	}
-	public void setAnswerTime(String answerTime) {
+	public void setAnswerTime(Date answerTime) {
 		this.answerTime = answerTime;
 	}
 	@Column(name = "question_info")
@@ -170,6 +175,16 @@ public class QuestionAnswer implements Serializable {
 		this.questionStatus = questionStatus;
 	}
 	@Override
+	public String toString() {
+		return "QuestionAnswer [id=" + id + ", appId=" + appId + ", userId="
+				+ userId + ", userName=" + userName + ", answerId=" + answerId
+				+ ", answerName=" + answerName + ", questionTime="
+				+ questionTime + ", answerTime=" + answerTime
+				+ ", questionInfo=" + questionInfo + ", answerInfo="
+				+ answerInfo + ", onlineStatus=" + onlineStatus
+				+ ", questionStatus=" + questionStatus + "]";
+	}
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -181,8 +196,8 @@ public class QuestionAnswer implements Serializable {
 				+ ((answerName == null) ? 0 : answerName.hashCode());
 		result = prime * result
 				+ ((answerTime == null) ? 0 : answerTime.hashCode());
-		result = prime * result + ((appId == null) ? 0 : appId.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + appId;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + onlineStatus;
 		result = prime * result
 				+ ((questionInfo == null) ? 0 : questionInfo.hashCode());
@@ -223,15 +238,9 @@ public class QuestionAnswer implements Serializable {
 				return false;
 		} else if (!answerTime.equals(other.answerTime))
 			return false;
-		if (appId == null) {
-			if (other.appId != null)
-				return false;
-		} else if (!appId.equals(other.appId))
+		if (appId != other.appId)
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (onlineStatus != other.onlineStatus)
 			return false;
@@ -259,15 +268,4 @@ public class QuestionAnswer implements Serializable {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "QuestionAnswer [id=" + id + ", appId=" + appId + ", userId="
-				+ userId + ", userName=" + userName + ", answerId=" + answerId
-				+ ", answerName=" + answerName + ", questionTime="
-				+ questionTime + ", answerTime=" + answerTime
-				+ ", questionInfo=" + questionInfo + ", answerInfo="
-				+ answerInfo + ", onlineStatus=" + onlineStatus
-				+ ", questionStatus=" + questionStatus + "]";
-	}
-	
 }

@@ -9,7 +9,7 @@ import com.wondertek.baiying.marketing.domain.QuestionAnswer;
 /**
  * Spring Data JPA repository for the ModelContentRule entity.
  */
-public interface QuestionAnswerRepository extends JpaRepository<QuestionAnswer, String> {
+public interface QuestionAnswerRepository extends JpaRepository<QuestionAnswer, Long> {
 
 	List<QuestionAnswer> findAllByQuestionStatus(String questionStatus);
 	

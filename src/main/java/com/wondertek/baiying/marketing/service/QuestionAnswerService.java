@@ -33,7 +33,7 @@ public class QuestionAnswerService {
     	return questionAnswerRepository.findAllByQuestionStatusAndAppId(questionStatus, appId);
     }
     
-    public QuestionAnswer findOneById(String id){
+    public QuestionAnswer findOneById(long id){
     	return questionAnswerRepository.findOne(id);
     }
     

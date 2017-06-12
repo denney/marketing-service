@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "lottery_log")
@@ -23,7 +25,6 @@ public class LotteryLog implements Serializable {
 	 */
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
 	private Long id;
 	
 	/**
@@ -41,8 +42,10 @@ public class LotteryLog implements Serializable {
     /**
 	 * 抽奖时间
 	 */
-	@Temporal(TemporalType.TIMESTAMP) 
+	
 	@Column(name="create_time")
+	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
     
     /**
@@ -54,7 +57,7 @@ public class LotteryLog implements Serializable {
     /**
 	 * 奖品名称
 	 */
-	@Column(name="avwrd_name")
+	@Column(name="award_name")
 	private String awardName;
     
     /**

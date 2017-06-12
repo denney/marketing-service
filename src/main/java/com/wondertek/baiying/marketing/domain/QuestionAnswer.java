@@ -12,6 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 /**
  * Persist AuditEvent managed by the Spring Boot actuator
@@ -131,7 +135,9 @@ public class QuestionAnswer implements Serializable {
 		this.answerName = answerName;
 	}
 	@Column(name = "question_time")
-	@Temporal(TemporalType.TIMESTAMP) 
+//	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
 	public Date getQuestionTime() {
 		return questionTime;
 	}
@@ -139,7 +145,9 @@ public class QuestionAnswer implements Serializable {
 		this.questionTime = questionTime;
 	}
 	@Column(name = "answer_time")
-	@Temporal(TemporalType.TIMESTAMP) 
+//	@Temporal(TemporalType.TIMESTAMP) 
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
 	public Date getAnswerTime() {
 		return answerTime;
 	}

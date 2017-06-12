@@ -18,7 +18,7 @@ public class QuestionAnswerController {
 
 	@Autowired
     private QuestionAnswerService questionAnswerService;
-	
+	//
 	@RequestMapping("/save")
     public QuestionAnswer save(QuestionAnswer QuestionAnswer){
 		QuestionAnswer registration =  questionAnswerService.save(QuestionAnswer);

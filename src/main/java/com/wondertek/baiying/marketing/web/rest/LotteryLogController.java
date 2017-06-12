@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wondertek.baiying.marketing.domain.LotteryLog;
-
 import com.wondertek.baiying.marketing.service.LotteryLogService;
 
 @RestController
@@ -22,14 +21,14 @@ public class LotteryLogController {
     }
 	
 	@RequestMapping("/findOneById")
-    public LotteryLog findOneById(String id){
-		LotteryLog log	 = lotteryLogService.findOneById(id);
+    public LotteryLog findOneById(Long id){
+		LotteryLog log	 = lotteryLogService.findById(id);
 		return log;
     }
 	@RequestMapping("/findOneByUserId")
-    public String findOneByUserId(String userId){
-		LotteryLog log	 = lotteryLogService.findOneById(userId);
-		if(log.getGetStatus().equals("0")){
+    public String findOneByUserId(Long userId){
+		LotteryLog log	 = lotteryLogService.findOneByUserId(userId);
+		if("0".equals(log.getGetStatus())){
 			log.setGetStatus("1");
 			lotteryLogService.save(log);
 			return "success";

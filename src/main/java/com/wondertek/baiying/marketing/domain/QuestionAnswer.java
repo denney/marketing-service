@@ -1,6 +1,7 @@
 package com.wondertek.baiying.marketing.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -56,12 +59,12 @@ public class QuestionAnswer implements Serializable {
     /**
      * 提问时间
      */
-    private String questionTime;
+    private Date questionTime;
     
     /**
      * 回答时间
      */
-    private String answerTime;
+    private Date answerTime;
     
     /**
      * 问题详情
@@ -128,17 +131,19 @@ public class QuestionAnswer implements Serializable {
 		this.answerName = answerName;
 	}
 	@Column(name = "question_time")
-	public String getQuestionTime() {
+	@Temporal(TemporalType.TIMESTAMP) 
+	public Date getQuestionTime() {
 		return questionTime;
 	}
-	public void setQuestionTime(String questionTime) {
+	public void setQuestionTime(Date questionTime) {
 		this.questionTime = questionTime;
 	}
 	@Column(name = "answer_time")
-	public String getAnswerTime() {
+	@Temporal(TemporalType.TIMESTAMP) 
+	public Date getAnswerTime() {
 		return answerTime;
 	}
-	public void setAnswerTime(String answerTime) {
+	public void setAnswerTime(Date answerTime) {
 		this.answerTime = answerTime;
 	}
 	@Column(name = "question_info")

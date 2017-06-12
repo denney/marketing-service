@@ -8,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
-
-import javax.persistence.Id;;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "lottery_log")
@@ -40,6 +41,7 @@ public class LotteryLog implements Serializable {
     /**
 	 * 抽奖时间
 	 */
+	@Temporal(TemporalType.TIMESTAMP) 
 	@Column(name="create_time")
 	private Date createTime;
     

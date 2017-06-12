@@ -30,12 +30,12 @@ public class QuestionAnswer implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
     /**
      * 区分app类型
      */
-    private int appId;
+    private String appId;
     
     /**
      * 提问者id
@@ -88,18 +88,18 @@ public class QuestionAnswer implements Serializable {
      * 点赞次数
      */
 //    private String praiseTimes;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
 	@Column(name = "app_id")
-	public int getAppId() {
+	public String getAppId() {
 		return appId;
 	}
-	public void setAppId(int appId) {
+	public void setAppId(String appId) {
 		this.appId = appId;
 	}
 	@Column(name = "user_id")
@@ -196,7 +196,7 @@ public class QuestionAnswer implements Serializable {
 				+ ((answerName == null) ? 0 : answerName.hashCode());
 		result = prime * result
 				+ ((answerTime == null) ? 0 : answerTime.hashCode());
-		result = prime * result + appId;
+		result = prime * result + ((appId == null) ? 0 : appId.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + onlineStatus;
 		result = prime * result
@@ -238,7 +238,10 @@ public class QuestionAnswer implements Serializable {
 				return false;
 		} else if (!answerTime.equals(other.answerTime))
 			return false;
-		if (appId != other.appId)
+		if (appId == null) {
+			if (other.appId != null)
+				return false;
+		} else if (!appId.equals(other.appId))
 			return false;
 		if (id != other.id)
 			return false;

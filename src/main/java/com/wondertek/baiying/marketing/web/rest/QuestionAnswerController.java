@@ -38,7 +38,7 @@ public class QuestionAnswerController {
 //	}
 	
 	@RequestMapping("/findOneById")
-	public QuestionAnswer findOneById(long id){
+	public QuestionAnswer findOneById(Long id){
 	    	return questionAnswerService.findOneById(id);
 	}
 	

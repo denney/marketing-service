@@ -30,7 +30,7 @@ public class QuestionAnswer implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
     /**
      * 区分app类型
@@ -88,10 +88,10 @@ public class QuestionAnswer implements Serializable {
      * 点赞次数
      */
 //    private String praiseTimes;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

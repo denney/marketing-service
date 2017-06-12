@@ -26,6 +26,18 @@ public class LotteryLogController {
 		LotteryLog log	 = lotteryLogService.findOneById(id);
 		return log;
     }
+	@RequestMapping("/findOneByUserId")
+    public String findOneByUserId(String userId){
+		LotteryLog log	 = lotteryLogService.findOneById(userId);
+		if(log.getGetStatus().equals("0")){
+			log.setGetStatus("1");
+			lotteryLogService.save(log);
+			return "success";
+		}else{
+			return "failure";
+		}
+		
+    }
 	
 	@RequestMapping("/findAll")
     public Page<LotteryLog> findAll(int page,int size,String direction,String property){

@@ -3,11 +3,16 @@ package com.wondertek.baiying.marketing.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
-@Document(collection = "lottery_log")
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "lottery_log")
 public class LotteryLog implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -15,50 +20,51 @@ public class LotteryLog implements Serializable {
 	/**
 	 * 唯一标识
 	 */
-	@Id
-    @Field("id")
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id")
 	private Long id;
 	
 	/**
      * 用户ID
      */
-    @Field("user_id")
+	@Column(name = "user_id")
     private Long userId;
     
     /**
 	 * 用户名称
 	 */
-    @Field("user_name")
-	private String usreName;
+	@Column(name="user_name")
+	private String userName;
     
     /**
 	 * 抽奖时间
 	 */
-    @Field("create_time")
+	@Column(name="create_time")
 	private Date createTime;
     
     /**
 	 * 奖品ID
 	 */
-    @Field("award_id")
+	@Column(name="award_id")
 	private Long awardId;
     
     /**
 	 * 奖品名称
 	 */
-    @Field("avwrd_name")
+	@Column(name="avwrd_name")
 	private String awardName;
     
     /**
 	 * 活动ID
 	 */
-    @Field("event_id")
+	@Column(name="event_id")
 	private Long eventId;
     
     /**
 	 * 用户是否领奖    0，未领；1，已领
 	 */
-    @Field("get_status")
+	@Column(name="get_status")
 	private String getStatus;
 
 	public Long getId() {
@@ -77,12 +83,12 @@ public class LotteryLog implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getUsreName() {
-		return usreName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsreName(String usreName) {
-		this.usreName = usreName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public Date getCreateTime() {
@@ -140,7 +146,7 @@ public class LotteryLog implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		result = prime * result
-				+ ((usreName == null) ? 0 : usreName.hashCode());
+				+ ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -188,18 +194,18 @@ public class LotteryLog implements Serializable {
 				return false;
 		} else if (!userId.equals(other.userId))
 			return false;
-		if (usreName == null) {
-			if (other.usreName != null)
+		if (userName == null) {
+			if (other.userName != null)
 				return false;
-		} else if (!usreName.equals(other.usreName))
+		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "LotteryLog [id=" + id + ", userId=" + userId + ", usreName="
-				+ usreName + ", createTime=" + createTime + ", awardId="
+		return "LotteryLog [id=" + id + ", userId=" + userId + ", userName="
+				+ userName + ", createTime=" + createTime + ", awardId="
 				+ awardId + ", awardName=" + awardName + ", eventId=" + eventId
 				+ ", getStatus=" + getStatus + "..]";
 	}

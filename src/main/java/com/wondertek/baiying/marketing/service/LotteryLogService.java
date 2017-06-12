@@ -33,7 +33,11 @@ public class LotteryLogService {
 	    return lotteryLogRepository.findOneById(id);
 	}
 	
-	 public Page<LotteryLog> findAll(int page,int size,String direction,String property) {
+	public LotteryLog findOneByUserId(String userId) {
+	    return lotteryLogRepository.findOneByUserId(userId);
+	}
+	
+	public Page<LotteryLog> findAll(int page,int size,String direction,String property) {
 	    Pageable pageable = null;
 	    if("asc".equals(direction)){
 	    	pageable = new PageRequest(page, size, Direction.ASC, property);

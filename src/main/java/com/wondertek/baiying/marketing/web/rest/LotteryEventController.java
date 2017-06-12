@@ -19,8 +19,6 @@ import com.wondertek.baiying.marketing.service.LotteryEventService;
 @RequestMapping("/lotteryEvent")
 public class LotteryEventController {
 
-    private final Logger log = LoggerFactory.getLogger(LotteryEventController.class);
-
 	@Autowired
 	private LotteryEventService lotteryEventService;
 

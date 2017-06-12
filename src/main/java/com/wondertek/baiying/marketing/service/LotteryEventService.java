@@ -50,7 +50,7 @@ public class LotteryEventService {
     }
 
     /**
-     * 根据ID查询
+     * 根据ID查询 Long
      * @param id
      * @return
      */

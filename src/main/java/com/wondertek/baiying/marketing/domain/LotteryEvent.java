@@ -9,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "lottery_event")
@@ -71,14 +70,14 @@ public class LotteryEvent implements Serializable {
 	 * 活动开始时间
 	 */
 	@Column(name ="start_time")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	private Date startTime;
 	
 	/**
 	 * 活动结束时间
 	 */
 	@Column(name ="end_time")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	private Date endTime;
 	
 	/**
@@ -109,7 +108,7 @@ public class LotteryEvent implements Serializable {
 	 * 创建时间
 	 */
 	@Column(name ="create_time")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	private Date createTime;
 	
 	/**
@@ -122,7 +121,7 @@ public class LotteryEvent implements Serializable {
 	 * 修改时间
 	 */
 	@Column(name ="update_time")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	private Date updateTime;
 	
 	/**

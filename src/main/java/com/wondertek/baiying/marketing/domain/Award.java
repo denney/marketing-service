@@ -3,11 +3,15 @@ package com.wondertek.baiying.marketing.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-@Document(collection = "award")
+import org.springframework.data.annotation.Id;
+
+@Entity
+//@Document(collection = "award")
 public class Award implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -16,80 +20,81 @@ public class Award implements Serializable {
 	 * 唯一标识
 	 */
     @Id
-    @Field("event_id")
-    private String id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id")
+    private Long id;
     
     /**
      * 名称
      */
-    @Field("name")
+    @Column(name="name")
     private String name;
     
     /**
      * 奖品图片
      */
-    @Field("poster")
+    @Column(name="poster")
     private String poster;
     
     /**
      * 活动ID
      */
-    @Field("event_id")
+    @Column(name="event_id")
     private Long eventId;
     
     /**
      * 奖品数量
      */
-    @Field("max_count")
+    @Column(name="max_count")
     private int maxCount;
     
     /**
      * 剩余数量
      */
-    @Field("inventory")
+    @Column(name="inventory")
     private int inventory;
     
     /**
      * 中奖概率
      */
-    @Field("win_rate")
+    @Column(name="win_rate")
     private double winRate;
     
     /**
      * 描述
      */
-    @Field("description")
+    @Column(name="description")
     private String description;
     
     /**
 	 * 创建时间
 	 */
-	@Field("create_time")
+    @Column(name="create_time")
 	private Date createTime;
 	
 	/**
 	 * 创建人编号
 	 */
-	@Field("creator_id")
+    @Column(name="creator_id")
 	private Long creatorId;
 	
 	/**
 	 * 修改时间
 	 */
-	@Field("update_time")
+    @Column(name="update_time")
 	private Date updateTime;
 	
 	/**
 	 * 修改人编号
 	 */
-	@Field("updator_id")
+    @Column(name="updator_id")
 	private Long updatorId;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -7,11 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
 @Entity
-//@Document(collection = "award")
+@Table(name = "award")
 public class Award implements Serializable {
 
 	private static final long serialVersionUID = 1L;

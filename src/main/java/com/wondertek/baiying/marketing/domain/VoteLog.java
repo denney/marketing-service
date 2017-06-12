@@ -2,6 +2,7 @@ package com.wondertek.baiying.marketing.domain;
 
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class VoteLog implements Serializable{
      * 投票的id属于哪个活动
      */
     @Column(name="vote_id")
-    private String voteId;
+    private Long voteId;
 
 	/**
      *用户名
@@ -39,8 +40,8 @@ public class VoteLog implements Serializable{
     /**
      * 用户投了那个选项
      */
-    @Column(name="optiont")
-    private String option;
+    @Column(name="options")
+    private String options;
 
     /**
      * 生成时间      举例： 2011-04-12 22:51:34.0
@@ -52,97 +53,128 @@ public class VoteLog implements Serializable{
     public VoteLog() {
     }
 
-    public VoteLog(String voteId, String userName, String userId, String option, Date createTime) {
-        this.voteId = voteId;
-        this.userName = userName;
-        this.userId = userId;
-        this.option = option;
-        this.createTime = createTime;
-    }
+	public VoteLog(Long id, Long voteId, String userName, String userId,
+			String options, Date createTime) {
+		super();
+		this.id = id;
+		this.voteId = voteId;
+		this.userName = userName;
+		this.userId = userId;
+		this.options = options;
+		this.createTime = createTime;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public String toString() {
+		return "VoteLog [id=" + id + ", voteId=" + voteId + ", userName="
+				+ userName + ", userId=" + userId + ", options=" + options
+				+ ", createTime=" + createTime + "]";
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getVoteId() {
-        return voteId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setVoteId(String voteId) {
-        this.voteId = voteId;
-    }
+	public Long getVoteId() {
+		return voteId;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public void setVoteId(Long voteId) {
+		this.voteId = voteId;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
-    public String getOption() {
-        return option;
-    }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    public void setOption(String option) {
-        this.option = option;
-    }
+	public String getOptions() {
+		return options;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public void setOptions(String options) {
+		this.options = options;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    @Override
-    public String toString() {
-        return "VoteLog{" +
-            "id=" + id +
-            ", voteId='" + voteId + '\'' +
-            ", userName='" + userName + '\'' +
-            ", userId='" + userId + '\'' +
-            ", option='" + option + '\'' +
-            ", createTime=" + createTime +
-            '}';
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((createTime == null) ? 0 : createTime.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((options == null) ? 0 : options.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result
+				+ ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((voteId == null) ? 0 : voteId.hashCode());
+		return result;
+	}
 
-        VoteLog voteLog = (VoteLog) o;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VoteLog other = (VoteLog) obj;
+		if (createTime == null) {
+			if (other.createTime != null)
+				return false;
+		} else if (!createTime.equals(other.createTime))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (options == null) {
+			if (other.options != null)
+				return false;
+		} else if (!options.equals(other.options))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		if (voteId == null) {
+			if (other.voteId != null)
+				return false;
+		} else if (!voteId.equals(other.voteId))
+			return false;
+		return true;
+	}
+    
 
-        if (id != null ? !id.equals(voteLog.id) : voteLog.id != null) return false;
-        if (voteId != null ? !voteId.equals(voteLog.voteId) : voteLog.voteId != null) return false;
-        if (userName != null ? !userName.equals(voteLog.userName) : voteLog.userName != null) return false;
-        if (userId != null ? !userId.equals(voteLog.userId) : voteLog.userId != null) return false;
-        if (option != null ? !option.equals(voteLog.option) : voteLog.option != null) return false;
-        return createTime != null ? createTime.equals(voteLog.createTime) : voteLog.createTime == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (voteId != null ? voteId.hashCode() : 0);
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (option != null ? option.hashCode() : 0);
-        result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
-        return result;
-    }
 }

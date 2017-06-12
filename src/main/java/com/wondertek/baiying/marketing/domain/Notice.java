@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "notice")
@@ -36,6 +38,7 @@ public class Notice implements Serializable {
 	/**
 	 * 记录生成时间
 	 */
+	@Temporal(TemporalType.TIMESTAMP) 
 	@Column(name = "create_time")
 	private Date createTime;
 

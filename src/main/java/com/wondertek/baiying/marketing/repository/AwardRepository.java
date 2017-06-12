@@ -1,10 +1,10 @@
 package com.wondertek.baiying.marketing.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.wondertek.baiying.marketing.domain.Award;
 
-public interface AwardRepository extends MongoRepository<Award, String> {
+public interface AwardRepository extends JpaRepository<Award, String> {
 	
 	Award findOneByName(String name);
 	

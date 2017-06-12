@@ -3,13 +3,7 @@ package com.wondertek.baiying.marketing.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "award")
@@ -21,8 +15,7 @@ public class Award implements Serializable {
 	 * 唯一标识
 	 */
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     /**
@@ -70,6 +63,7 @@ public class Award implements Serializable {
     /**
 	 * 创建时间
 	 */
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="create_time")
 	private Date createTime;
 	
@@ -82,6 +76,7 @@ public class Award implements Serializable {
 	/**
 	 * 修改时间
 	 */
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="update_time")
 	private Date updateTime;
 	

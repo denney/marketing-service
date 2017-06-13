@@ -25,30 +25,19 @@ public class QuestionAnswerController {
 		return registration;
     }
 	
-	@RequestMapping("/findAllByQuestionStatusAndAppId")
-    public List<QuestionAnswer> findAllByQuestionStatusAndAppId(String questionStatus,String appId){
-		return questionAnswerService.findAllByQuestionStatusAndAppId(questionStatus, appId);
+	@RequestMapping("/findAllQuestionAnswer")
+    public List<QuestionAnswer> findAllQuestionAnswer(int onlineStatus,int questionStatusA,int questionStatusB,String appId,String questionTime,int page,int size,String direction,String property){
+		return questionAnswerService.findAllQuestionAnswer(onlineStatus,questionStatusA, questionStatusB, appId, questionTime, page, size, direction, property);
     }
 	
-//	@RequestMapping("/findAll")
-//	@ResponseBody
-//	public ResponseEntity<Page<QuestionAnswer>> findAll(int page,int size,String direction,String property){
-//		Page<QuestionAnswer> QuestionAnswerPage = QuestionAnswerService.findAll(page,size,direction,property);
-//		return new ResponseEntity<>(QuestionAnswerPage,null,HttpStatus.OK);
-//	}
 	
 	@RequestMapping("/findOneById")
 	public QuestionAnswer findOneById(Long id){
 	    	return questionAnswerService.findOneById(id);
 	}
 	
-	@RequestMapping("/findAllByQuestionStatusOrQuestionStatusAndAppId")
-	public List<QuestionAnswer> findAllByQuestionStatusOrQuestionStatusAndAppId(String questionStatus,String Status,String appId){
- 	   return questionAnswerService.findAllByQuestionStatusOrQuestionStatusAndAppId(questionStatus,Status,appId);
-    }
-	
-	@RequestMapping("/findAllByQuestionStatusAndAppIdAndQuestionTimeAfter")
-    public List<QuestionAnswer> findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(String questionStatus,String appId,String questionTime){
-    	return questionAnswerService.findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(questionStatus,appId,questionTime);
-    }
+	@RequestMapping("/deleteOneById")
+	public void deleteOneById(Long id){
+	    	 questionAnswerService.deleteOneById(id);
+	}
 }

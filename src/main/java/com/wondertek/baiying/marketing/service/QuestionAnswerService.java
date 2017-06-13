@@ -1,9 +1,15 @@
 package com.wondertek.baiying.marketing.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,20 +35,31 @@ public class QuestionAnswerService {
     	return questionAnswerRepository.save(questionAnswer);
     }
     
-    public  List<QuestionAnswer> findAllByQuestionStatusAndAppId(String questionStatus,String appId){
-    	return questionAnswerRepository.findAllByQuestionStatusAndAppId(questionStatus, appId);
+    public  List<QuestionAnswer> findAllQuestionAnswer(int onlineStatus,int questionStatusA,int questionStatusB,String appId,String questionTime,int page,int size,String direction,String property){
+    	Pageable pageable = null;
+    	if("asc".equals(direction)){
+    		pageable = new PageRequest(page, size, Direction.ASC, property);
+    	}else{
+    		pageable = new PageRequest(page, size, Direction.DESC, property);
+    	}
+    	SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	Date date=null;
+		try {
+			date = fm.parse(questionTime);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(fm.format(date));
+    	return questionAnswerRepository.findAllByOnlineStatusAndQuestionStatusOrQuestionStatusAndAppIdAndQuestionTime(onlineStatus,questionStatusA, questionStatusB, appId, date, pageable);
     }
     
     public QuestionAnswer findOneById(Long id){
     	return questionAnswerRepository.findOne(id);
     }
     
-    public List<QuestionAnswer> findAllByQuestionStatusOrQuestionStatusAndAppId(String questionStatus,String Status,String appId){
-    	return 	questionAnswerRepository.findAllByQuestionStatusOrQuestionStatusAndAppId(questionStatus, Status, appId);
-    }
-    
-    public  List<QuestionAnswer>  findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(String questionStatus,String appId,String questionTime){
-    	return 	questionAnswerRepository.findAllByQuestionStatusAndAppIdAndQuestionTimeAfter(questionStatus, appId, questionTime);
+    public void deleteOneById(Long id){
+    	questionAnswerRepository.delete(id);
     }
     
     

@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.wondertek.baiying.marketing",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "4.4.1",
+    "baseName": "marketingService",
+    "packageName": "com.wondertek.baiying.marketing",
+    "packageFolder": "com/wondertek/baiying/marketing",
+    "serverPort": "8040",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "e09a758dbec1b3ca8b6014bef2be86e7446f8c0f",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "zh-cn",
+      "zh-tw"
+    ],
+    "clientPackageManager": "yarn"
+  }
+}

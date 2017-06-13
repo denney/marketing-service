@@ -5,10 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "notice")
@@ -17,39 +20,40 @@ public class Notice implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 唯一标识
+	 * 公告的唯一标识
 	 */
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	/**
-	 * 该业务属于哪个app
+	 * 该公告所属的app
 	 */
 	@Column(name = "app_id")
 	private String appId;
 
 	/**
-	 * 公告条内容
+	 * 公告内容
 	 */
 	@Column(name = "content")
 	private String content;
 
 	/**
-	 * 记录生成时间
+	 * 公告生成时间
 	 */
-	@Temporal(TemporalType.TIMESTAMP) 
 	@Column(name = "create_time")
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 
 	/**
-	 * 记录创建人
+	 * 公告创建人id
 	 */
 	@Column(name = "creator_id")
 	private String creatorId;
 
 	/**
-	 * 创建人名
+	 * 创建人人名
 	 */
 	@Column(name = "creator_name")
 	private String creatorName;
@@ -59,7 +63,7 @@ public class Notice implements Serializable {
 	 */
 	@Column(name = "online_status")
 	private String onlineStatus;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -188,7 +192,5 @@ public class Notice implements Serializable {
 			return false;
 		return true;
 	}
-
-
 
 }

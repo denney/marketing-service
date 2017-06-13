@@ -6,8 +6,8 @@ import com.wondertek.baiying.marketing.domain.Award;
 
 public interface AwardRepository extends JpaRepository<Award, String> {
 	
-	Award findOneByName(String name);
+	Award findOneById(long id);
 	
-	Award findOneById(String id);
+	Award deleteById(long id);
 
 }

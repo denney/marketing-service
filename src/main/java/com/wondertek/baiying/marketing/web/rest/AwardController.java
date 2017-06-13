@@ -1,7 +1,5 @@
 package com.wondertek.baiying.marketing.web.rest;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,31 +21,29 @@ public class AwardController {
 		return Activities;
     }
 	
-	@RequestMapping("/findOneByName")
-    public Award findOneByName(String name){
-		Award Activities = awardService.findOneByName(name);
-		return Activities;
-    }
-	
 	@RequestMapping("/findOneById")
-    public Award findOneById(String id){
+    public Award findOneById(long id){
 		Award Activities = awardService.findOneById(id);
 		return Activities;
     }
 	
+	
+	/**
+     * 分页查询
+     * @param page 第几页
+     * @param size 一页多少条
+     * @param direction 排序方式 降序还是升序
+     * @param property  按哪个属性排序
+     * @return
+     */
 	@RequestMapping("/findAll")
     public Page<Award> findAll(int page,int size,String direction,String property){
 		Page<Award> ActivitiesPage = awardService.findAll(page,size,direction,property);
 		return ActivitiesPage;
     }
-
-	@RequestMapping("/findAllList")
-    public List<Award> findAllList(){
-		return awardService.findAll();
-    }
 	
 	@RequestMapping("/deleteOneById")
-    public void deleteOneById(String id ){
+    public void deleteOneById(long id ){
 		awardService.deleteById(id);;
     }
 }

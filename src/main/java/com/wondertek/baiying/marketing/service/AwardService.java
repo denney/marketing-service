@@ -38,12 +38,8 @@ public class AwardService {
     	}
     	return awardRepository.findAll( pageable);
     }
-    public Award findOneByName(String name) {
-    	return awardRepository.findOneByName(name);
-    }
-    
 
-    public Award findOneById(String id) {
+    public Award findOneById(long id) {
     	return awardRepository.findOneById(id);
     }
     
@@ -51,8 +47,8 @@ public class AwardService {
     	return awardRepository.findAll();
     }
 
-    public void deleteById(String id) {
-    	awardRepository.delete(id);;
+    public void deleteById(long id) {
+    	awardRepository.deleteById(id);;
     }
 
 }

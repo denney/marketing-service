@@ -5,8 +5,12 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
-@Table(name = "award")
+@Table(name = "AWARD")
 public class Award implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,69 +25,71 @@ public class Award implements Serializable {
     /**
      * 名称
      */
-    @Column(name="name")
+    @Column(name="NAME")
     private String name;
     
     /**
      * 奖品图片
      */
-    @Column(name="poster")
+    @Column(name="POSTER")
     private String poster;
     
     /**
      * 活动ID
      */
-    @Column(name="event_id")
+    @Column(name="EVENT_ID")
     private Long eventId;
     
     /**
      * 奖品数量
      */
-    @Column(name="max_count")
+    @Column(name="MAX_COUNT")
     private int maxCount;
     
     /**
      * 剩余数量
      */
-    @Column(name="inventory")
+    @Column(name="INVENTORY")
     private int inventory;
     
     /**
      * 中奖概率
      */
-    @Column(name="win_rate")
+    @Column(name="WIN_RATE")
     private double winRate;
     
     /**
      * 描述
      */
-    @Column(name="description")
+    @Column(name="DESCRIPTION")
     private String description;
     
     /**
 	 * 创建时间
 	 */
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="create_time")
+    @Column(name="CREATE_TIME")
+    @JsonFormat(timezone="GMT+8",pattern="yy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yy-MM-dd HH:mm:ss")
 	private Date createTime;
 	
 	/**
 	 * 创建人编号
 	 */
-    @Column(name="creator_id")
+    @Column(name="CREATOR_ID")
 	private Long creatorId;
 	
 	/**
 	 * 修改时间
 	 */
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="update_time")
+    @Column(name="UPDATE_TIME")
+    @JsonFormat(timezone="GMT+8",pattern="yy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yy-MM-dd HH:mm:ss")
 	private Date updateTime;
 	
 	/**
 	 * 修改人编号
 	 */
-    @Column(name="updator_id")
+    @Column(name="UPDATOR_ID")
 	private Long updatorId;
 
 	public Long getId() {

@@ -17,6 +17,7 @@ import java.time.Instant;
  */
 public abstract class AbstractAuditingEntity implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     @CreatedBy
